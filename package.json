@@ -1,5 +1,5 @@
 {
-  "name": "postcss-px2units",
+  "name": "postcss-units-transform",
   "version": "0.2.0",
   "description": "postcss plugin",
   "main": "index.js",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yingye/postcss-px2units.git"
+    "url": "git+https://github.com/noyobo/postcss-units-transform.git"
   },
   "keywords": [
     "postcss",
     "plugin",
     "pxtotarget"
   ],
-  "author": "yingye",
+  "author": "noyobo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yingye/postcss-px2units/issues"
+    "url": "https://github.com/noyobo/postcss-units-transform/issues"
   },
-  "homepage": "https://github.com/yingye/postcss-px2units#readme",
+  "homepage": "https://github.com/noyobo/postcss-units-transform#readme",
   "dependencies": {
     "object-assign": "^4.1.1",
     "postcss": "^6.0.19"

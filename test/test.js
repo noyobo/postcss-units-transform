@@ -1,101 +1,153 @@
-var postcss = require('postcss')
-var expect= require('chai').expect
+var postcss = require('postcss');
+var expect = require('chai').expect;
 
-var plugin = require('../')
+var plugin = require('../');
 
-function test (input, output, opts, done) {
+function test(input, output, opts, done) {
   postcss([plugin(opts)])
-    .process(input, {from: undefined})
-    .then((result) => {
+    .process(input, { from: undefined })
+    .then(result => {
       expect(result.css).to.eql(output);
       expect(result.warnings()).to.be.empty;
       done();
     })
-    .catch((error) => {
+    .catch(error => {
       done(error);
-    })
+    });
 }
 
 describe('postcss-px2units', () => {
-  it('replace pixel values', (done) => {
-    test(`.title {
+  it('replace pixel values', done => {
+    test(
+      `.title {
       font-size: 24px;
       background-image: url(../slice/icon-wh.png);
       margin: 0 0 0 5px;
       vertical-align: -1px;
       display: flex;
-    }`, `.title {
+    }`,
+      `.title {
       font-size: 24rpx;
       background-image: url(../slice/icon-wh.png);
       margin: 0 0 0 5rpx;
       vertical-align: -1rpx;
       display: flex;
-    }`, {}, done)
-  })
+    }`,
+      {},
+      done
+    );
+  });
 
-  it('rpx not be replaced', (done) => {
-    test(`.title2 {
+  it('rpx not be replaced', done => {
+    test(
+      `.title2 {
       padding: 20rpx 30px 2rem 4em;
-    }`, `.title2 {
+    }`,
+      `.title2 {
       padding: 20rpx 30rpx 2rem 4em;
-    }`, {}, done)
-  })
+    }`,
+      {},
+      done
+    );
+  });
 
-  it('pixel values not be replaced', (done) => {
-    test(`.title3 {
+  it('pixel values not be replaced', done => {
+    test(
+      `.title3 {
       padding: 20rpx 30px 2rem 4em; /* no */
       margin: 40px;
       font-size: 24px; /* no */
-    }`, `.title3 {
+    }`,
+      `.title3 {
       padding: 20rpx 30px 2rem 4em;
       margin: 40rpx;
       font-size: 24px;
-    }`, {
-      comment: 'no'
-    }, done)
-  })
+    }`,
+      {
+        comment: 'no'
+      },
+      done
+    );
+  });
 
-  it('replace pixel values with px / opts.divisor', (done) => {
-    test(`.title4 {
+  it('replace pixel values with px / opts.divisor', done => {
+    test(
+      `.title4 {
       padding: 30px;
       margin: 40px;
-    }`, `.title4 {
+    }`,
+      `.title4 {
       padding: 10rpx;
       margin: 13.33rpx;
-    }`, {
-      divisor: 3,
-      decimalPlaces: 2
-    }, done)
-  })
+    }`,
+      {
+        divisor: 3,
+        decimalPlaces: 2
+      },
+      done
+    );
+  });
 
-  it('replace pixel values with px * opts.multiple', (done) => {
-    test(`.title5 {
+  it('replace pixel values with px * opts.multiple', done => {
+    test(
+      `.title5 {
       padding: 30px;
       margin: 40px;
-    }`, `.title5 {
+    }`,
+      `.title5 {
       padding: 60rpx;
       margin: 80rpx;
-    }`, {
-      multiple: 2
-    }, done)
-  })
+    }`,
+      {
+        multiple: 2
+      },
+      done
+    );
+  });
 
-  it('replace pixel values with rem units', (done) => {
-    test(`.title6 {
+  it('replace pixel values with rem units', done => {
+    test(
+      `.title6 {
       padding: 30px;
       margin: 40px;
-    }`, `.title6 {
+    }`,
+      `.title6 {
       padding: 15rem;
       margin: 20rem;
-    }`, {
-      divisor: 2,
-      decimalPlaces: 2,
-      targetUnits: 'rem'
-    }, done)
-  })
+    }`,
+      {
+        divisor: 2,
+        decimalPlaces: 2,
+        targetUnits: 'rem'
+      },
+      done
+    );
+  });
 
-  it('work in media', (done) => {
-    test(`@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  it('replace rem values with px units', done => {
+    test(
+      `.title6 {
+      padding: 7.5rem;
+      margin: 0.2rem;
+    }`,
+      `.title6 {
+      padding: 750px;
+      margin: 20px;
+    }`,
+      {
+        divisor: 1 / 100,
+        multiple: 1,
+        decimalPlaces: 2,
+        sourceUnits: 'rem',
+        targetUnits: 'px'
+      },
+      done
+    );
+  });
+
+  it('work in media', done => {
+    test(
+      `@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
       .word {
         margin-top: 30px;
         margin-bottom: 40px;
@@ -105,7 +157,8 @@ describe('postcss-px2units', () => {
         margin-top: 50px;
         margin-bottom: 60px;
       }
-    }`, `@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+    }`,
+      `@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
       .word {
         margin-top: 30rpx;
         margin-bottom: 40rpx;
@@ -115,11 +168,15 @@ describe('postcss-px2units', () => {
         margin-top: 50rpx;
         margin-bottom: 60rpx;
       }
-    }`, {}, done)
-  })
+    }`,
+      {},
+      done
+    );
+  });
 
-  it('work in keyframes', (done) => {
-    test(`@keyframes anim {
+  it('work in keyframes', done => {
+    test(
+      `@keyframes anim {
       0% {
         width: 10px;
         height: 10px;
@@ -130,7 +187,8 @@ describe('postcss-px2units', () => {
         height: 20px;
         font-size: 42px;
       }
-    }`, `@keyframes anim {
+    }`,
+      `@keyframes anim {
       0% {
         width: 10rpx;
         height: 10rpx;
@@ -141,10 +199,18 @@ describe('postcss-px2units', () => {
         height: 20rpx;
         font-size: 42rpx;
       }
-    }`, {}, done)
-  })
+    }`,
+      {},
+      done
+    );
+  });
 
-  it('work in others', (done) => {
-    test(`.main {background: 12px 12rpx url('https://px.test.com/rpx/PX/pX.png')}`, `.main {background: 12rpx 12rpx url('https://px.test.com/rpx/PX/pX.png')}`, {}, done)
-  })
-})
+  it('work in others', done => {
+    test(
+      `.main {background: 12px 12rpx url('https://px.test.com/rpx/PX/pX.png')}`,
+      `.main {background: 12rpx 12rpx url('https://px.test.com/rpx/PX/pX.png')}`,
+      {},
+      done
+    );
+  });
+});

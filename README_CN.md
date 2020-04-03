@@ -46,11 +46,11 @@ var postcss = require('postcss');
 var pxtorem = require('postcss-pxtorem');
 var css = fs.readFileSync('main.css', 'utf8');
 var options = {
-    replace: false
+  replace: false
 };
 var processedCss = postcss(pxtorem(options)).process(css).css;
 
-fs.writeFile('main-rem.css', processedCss, function (err) {
+fs.writeFile('main-rem.css', processedCss, function(err) {
   if (err) {
     throw err;
   }
@@ -77,10 +77,11 @@ Default:
 Detail:
 
 - divisor(Number): 除数，转换后的值 等于 pixel / divisor
-- multiple(Number): 倍数，转换后的值 等于 pixel * multiple
-- decimalPlaces(Number): 小数点后保留的位数，例如, `width: 100px` 中的100，将会被转换成 `Number(100 / divisor * multiple).toFixed(decimalPlaces)`
-- comment(String): 不转换px单位的注释，默认为 `/*no*/`。如果设置 comment 的值为 'not replace', `width: 100px; /* not replace */` 中的100px将不会被转换为 rpx。
-- targetUnits(String): 转换单位，默认值为 rpx，如果设置其值为 'rem'，px将会被转换为rem。
+- multiple(Number): 倍数，转换后的值 等于 pixel \* multiple
+- decimalPlaces(Number): 小数点后保留的位数，例如, `width: 100px` 中的 100，将会被转换成 `Number(100 / divisor * multiple).toFixed(decimalPlaces)`
+- comment(String): 不转换 px 单位的注释，默认为 `/*no*/`。如果设置 comment 的值为 'not replace', `width: 100px; /* not replace */` 中的 100px 将不会被转换为 rpx。
+- sourceUnits(String): 需要转换的单位，默认值为 `px`
+- targetUnits(String): 转换单位，默认值为 `rpx`，如果设置其值为 `rem`，px 将会被转换为 rem。
 
 ### Use with gulp-postcss
 
@@ -89,8 +90,9 @@ var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var pxtounits = require('postcss-pxtounits');
 
-gulp.task('css', function () {
-  return gulp.src('./test/src/css/**/*.css')
+gulp.task('css', function() {
+  return gulp
+    .src('./test/src/css/**/*.css')
     .pipe(postcss([pxtounits()]))
     .pipe(gulp.dest('./test/dist/css'));
 });

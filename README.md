@@ -46,11 +46,11 @@ var postcss = require('postcss');
 var pxtorem = require('postcss-pxtorem');
 var css = fs.readFileSync('main.css', 'utf8');
 var options = {
-    replace: false
+  replace: false
 };
 var processedCss = postcss(pxtorem(options)).process(css).css;
 
-fs.writeFile('main-rem.css', processedCss, function (err) {
+fs.writeFile('main-rem.css', processedCss, function(err) {
   if (err) {
     throw err;
   }
@@ -77,9 +77,10 @@ Default:
 Detail:
 
 - divisor(Number): divisor, replace pixel value with pixel / divisor.
-- multiple(Number): multiple, replace pixel value with pixel * multiple.
+- multiple(Number): multiple, replace pixel value with pixel \* multiple.
 - decimalPlaces(Number): the number of decimal places. For example, the css code is `width: 100px`, we will get the vaule is `Number(100 / divisor * multiple).toFixed(decimalPlaces)`.
 - comment(String): default value is 'no'. For example, if you set it 'not replace', the css code `width: 100px; /* not replace */` will be translated to `width: 100px;`
+- sourceUnits(String): The units to be replaced. defualt (`px`)
 - targetUnits(String): The units will replace pixel units, you can set it 'rem'.
 
 ### Use with gulp-postcss
@@ -89,8 +90,9 @@ var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var pxtounits = require('postcss-pxtounits');
 
-gulp.task('css', function () {
-  return gulp.src('./test/src/css/**/*.css')
+gulp.task('css', function() {
+  return gulp
+    .src('./test/src/css/**/*.css')
     .pipe(postcss([pxtounits()]))
     .pipe(gulp.dest('./test/dist/css'));
 });

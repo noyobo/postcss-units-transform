@@ -27,3 +27,5 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v2
       - run: yarn install --frozen-lockfile
       - run: yarn test
+      - name: Codecov
+        uses: codecov/codecov-action@v2.0.2

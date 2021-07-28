@@ -24,6 +24,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+      - uses: c-hive/gha-yarn-cache@v2
       - run: yarn install --frozen-lockfile
       - run: yarn test

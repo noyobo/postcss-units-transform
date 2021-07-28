@@ -1,6 +1,6 @@
 {
   "name": "postcss-units-transform",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "CSS 任意单位之间的互相转换的 PostCSS 插件。",
   "main": "index.js",
   "files": [

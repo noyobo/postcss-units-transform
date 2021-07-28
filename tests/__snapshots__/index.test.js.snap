@@ -9,6 +9,13 @@ exports[`Test case: comment-no 1`] = `
 "
 `;
 
+exports[`Test case: empty-values 1`] = `
+".title2 {
+  padding: ;
+}
+"
+`;
+
 exports[`Test case: keep-units 1`] = `
 ".title2 {
   padding: 20rpx 30rpx 2rem 4em;

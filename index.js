@@ -15,10 +15,13 @@ module.exports = postcss.plugin('postcss-units-transform', function (options = {
     options
   );
 
-  function replacePx(str) {
+  function replacePx(value) {
+    if (!value) {
+      return value;
+    }
     const sourceReg = new RegExp(`\\b(\\d+(\\.\\d+)?)${opts.sourceUnits}\\b`, 'gi');
 
-    return str.replace(sourceReg, function (match, x) {
+    return value.replace(sourceReg, function (_, x) {
       var size = (x * opts.multiple) / opts.divisor;
       return size % 1 === 0 ? size + opts.targetUnits : size.toFixed(opts.decimalPlaces) + opts.targetUnits;
     });

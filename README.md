@@ -3,6 +3,7 @@ postcss-units-transform
 [![Build Status](https://github.com/noyobo/postcss-units-transform/workflows/Node.js%20CI/badge.svg)](https://github.com/noyobo/postcss-units-transform/actions?workflow=Node.js+CI)
 [![npm version](https://badge.fury.io/js/postcss-units-transform.svg)](https://badge.fury.io/js/postcss-units-transform)
 [![change-log](https://img.shields.io/badge/changelog-md-blue.svg)](https://github.com/noyobo/postcss-units-transform/blob/main/CHANGELOG.md)
+[![codecov](https://codecov.io/gh/noyobo/postcss-units-transform/branch/main/graph/badge.svg?token=ptSmeTp30P)](https://codecov.io/gh/noyobo/postcss-units-transform)
 
 CSS 任意单位之间的互相转换的 [PostCSS](https://github.com/ai/postcss)插件。
 

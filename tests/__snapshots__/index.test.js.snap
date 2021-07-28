@@ -118,3 +118,10 @@ exports[`Test case: pixel-values 1`] = `
 }
 "
 `;
+
+exports[`Test case: rem-em 1`] = `
+".main {
+  font-size: 1em;
+}
+"
+`;

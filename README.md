@@ -1,6 +1,6 @@
 postcss-units-transform
 
-[![Build Status](ttps://github.com/noyobo/postcss-units-transform/workflows/Node.js%20CI/badge.svg)](https://github.com/noyobo/postcss-flex-item/actions?workflow=Node.js+CI)
+[![Build Status](ttps://github.com/noyobo/postcss-units-transform/workflows/Node.js%20CI/badge.svg)](https://github.com/noyobo/postcss-units-transform/actions?workflow=Node.js+CI)
 [![npm version](https://badge.fury.io/js/postcss-units-transform.svg)](https://badge.fury.io/js/postcss-units-transform)
 [![change-log](https://img.shields.io/badge/changelog-md-blue.svg)](https://github.com/noyobo/postcss-units-transform/blob/main/CHANGELOG.md)
 

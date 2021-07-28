@@ -27,9 +27,8 @@
   },
   "homepage": "https://github.com/noyobo/postcss-units-transform#readme",
   "dependencies": {
-    "number-precision": "^1.5.0",
     "object-assign": "^4.1.1",
-    "postcss": "^6.0.19"
+    "postcss": "7.x"
   },
   "devDependencies": {
     "eslint": "^7.31.0",

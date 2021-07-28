@@ -16,11 +16,6 @@ module.exports = postcss.plugin('postcss-units-transform', function (options = {
   );
 
   function replacePx(str) {
-    /* istanbul ignore next */
-    if (!str) {
-      return '';
-    }
-
     const sourceReg = new RegExp(`\\b(\\d+(\\.\\d+)?)${opts.sourceUnits}\\b`, 'gi');
 
     return str.replace(sourceReg, function (match, x) {

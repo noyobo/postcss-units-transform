@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest",
     "prepare": "husky install",
-    "lint": "eslint"
+    "lint": "eslint",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",

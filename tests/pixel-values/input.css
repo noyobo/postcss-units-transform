@@ -1,0 +1,7 @@
+.title {
+  font-size: 24px;
+  background-image: url(../slice/icon-wh.png);
+  margin: 0 0 0 5px;
+  vertical-align: -1px;
+  display: flex;
+}

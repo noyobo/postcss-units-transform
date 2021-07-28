@@ -1,0 +1,51 @@
+{
+  "name": "postcss-units-transform",
+  "version": "0.2.0",
+  "description": "CSS 任意单位之间的互相转换的 PostCSS 插件。",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noyobo/postcss-units-transform.git"
+  },
+  "keywords": [
+    "postcss",
+    "plugin"
+  ],
+  "author": "noyobo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noyobo/postcss-units-transform/issues"
+  },
+  "homepage": "https://github.com/noyobo/postcss-units-transform#readme",
+  "dependencies": {
+    "number-precision": "^1.5.0",
+    "object-assign": "^4.1.1",
+    "postcss": "^6.0.19"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "jest": "^27.0.6"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended"
+    ],
+    "rules": {
+      "jest/expect-expect": "off"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test case: comment-no 1`] = `
+".title3 {
+  padding: 20rpx 30px 2rem 4em;
+  margin: 40rpx;
+  font-size: 24px;
+}
+"
+`;
+
+exports[`Test case: keep-units 1`] = `
+".title2 {
+  padding: 20rpx 30rpx 2rem 4em;
+}
+"
+`;
+
+exports[`Test case: keyframes 1`] = `
+"@keyframes anim {
+  0% {
+    width: 10rpx;
+    height: 10rpx;
+    font-size: 24rpx;
+  }
+  100% {
+    width: 20rpx;
+    height: 20rpx;
+    font-size: 42rpx;
+  }
+}
+"
+`;
+
+exports[`Test case: media-query 1`] = `
+"@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  .word {
+    margin-top: 30rpx;
+    margin-bottom: 40rpx;
+  }
+  .word-retina {
+    margin-top: 50rpx;
+    margin-bottom: 60rpx;
+  }
+}
+"
+`;
+
+exports[`Test case: options.1024 1`] = `
+".title6 {
+  padding: 1000.00rpx;
+}
+"
+`;
+
+exports[`Test case: options.declMembers 1`] = `
+".title6 {
+  padding: 3rem;
+  margin: 4rem;
+  font-size: 14.00px;
+}
+"
+`;
+
+exports[`Test case: options.divisor 1`] = `
+".title4 {
+  padding: 10rpx;
+  margin: 13.33rpx;
+}
+"
+`;
+
+exports[`Test case: options.multiple 1`] = `
+".title5 {
+  padding: 15rem;
+  margin: 20rem;
+}
+"
+`;
+
+exports[`Test case: options.sourceUnits 1`] = `
+".title6 {
+  padding: 750px;
+  margin: 20px;
+}
+"
+`;
+
+exports[`Test case: options.targetUnits 1`] = `
+".title6 {
+  padding: 60rpx;
+  margin: 80rpx;
+}
+"
+`;
+
+exports[`Test case: otherwise 1`] = `
+".main {
+  background: 12rpx 12rpx url('https://px.test.com/rpx/PX/pX.png');
+}
+"
+`;
+
+exports[`Test case: pixel-values 1`] = `
+".title {
+  font-size: 24rpx;
+  background-image: url(../slice/icon-wh.png);
+  margin: 0 0 0 5rpx;
+  vertical-align: -1rpx;
+  display: flex;
+}
+"
+`;

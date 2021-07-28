@@ -1,0 +1,10 @@
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  .word {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .word-retina {
+    margin-top: 50px;
+    margin-bottom: 60px;
+  }
+}

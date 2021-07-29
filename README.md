@@ -85,17 +85,46 @@ Detail:
 - targetUnits(String): 转换单位，默认值为 `rpx`，如果设置其值为 `rem`，px 将会被转换为 rem。
 - declMembers(String[]): 可转换的属性成员名单。
 
-### Use with gulp-postcss
+## 高级用法
 
-```js
-var gulp = require('gulp');
-var postcss = require('gulp-postcss');
-var postcssUnitsTransform = require('postcss-units-transform');
+### 1. 通过全局注释开启转换
 
-gulp.task('css', function () {
-  return gulp
-    .src('./**/*.css')
-    .pipe(postcss([postcssUnitsTransform()]))
-    .pipe(gulp.dest('./dist/css'));
-});
+优先级高于 `options.declMembers` 互斥关系
+
+`/* units-transform */`
+
+```css
+/* units-transform */
+.main {
+  height: 1rem;
+  width: 2rem;
+  font-size: 0.28rem;
+}
+```
+
+### 2. 通过全局注释指定属性开启转换
+
+优先级高于 `options.declMembers` 互斥关系
+
+`/* units-transform:height,width */`
+
+```css
+/* units-transform:height,width */
+.main {
+  height: 1rem;
+  width: 2rem;
+  font-size: 0.28rem;
+}
+```
+
+### 3. 行内注释开启转换
+
+与 `options.declMembers` 并集的关系
+
+```css
+.main {
+  height: 1rem;
+  width: 2rem; /* units-transform */
+  font-size: 0.36rem;
+}
 ```

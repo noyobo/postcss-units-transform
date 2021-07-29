@@ -6,7 +6,8 @@ const { readFileSync, existsSync, readdirSync, statSync } = require('fs-extra');
 
 async function run(dir) {
   let opts;
-  const input = readFileSync(path.join(dir, 'input.css')).toString();
+  const inputFile = path.join(dir, 'input.css');
+  const input = readFileSync(inputFile).toString();
   if (existsSync(path.join(dir, 'config.js'))) {
     opts = require(path.join(dir, 'config.js'));
   }
@@ -21,6 +22,7 @@ async function run(dir) {
 
 const features = readdirSync(__dirname)
   .filter((dir) => dir !== '__snapshots__')
+  // .filter((dir) => dir.startsWith('comment'))
   .filter((d) => {
     return statSync(path.join(__dirname, d)).isDirectory();
   });

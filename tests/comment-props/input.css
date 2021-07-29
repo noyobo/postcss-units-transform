@@ -1,3 +1,4 @@
+/* units-transform:height,height*/
 .main {
   height: 1rem;
   width: 2rem;
@@ -12,6 +13,6 @@
 
 .main2 {
   height: 1rem;
-  width: 2rem;
+  width: 2rem; /* units-transform */
   font-size: 0.36rem;
 }

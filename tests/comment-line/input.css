@@ -1,6 +1,6 @@
 .main {
   height: 1rem;
-  width: 2rem;
+  width: 2rem; /* units-transform */
   font-size: 0.28rem;
 }
 
@@ -12,6 +12,6 @@
 
 .main2 {
   height: 1rem;
-  width: 2rem;
+  width: 2rem; /* units-transform */
   font-size: 0.36rem;
 }

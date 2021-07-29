@@ -27,12 +27,45 @@ module.exports = postcss.plugin('postcss-units-transform', function (options = {
     });
   }
 
+  /**
+   * 检测当前 decl 是否含行内注释转换
+   * @param {process.Declaration} decl
+   */
+  function checkDeclTransform(decl) {
+    return (decl.next() && decl.next().type === 'comment' && decl.next().text === 'units-transform') || false;
+  }
+
   return function (root) {
+    let hasGlobalMembers;
+    root.walkComments(function (comment) {
+      // 根节点的注释 units-transform
+      if (comment.parent.type === 'root') {
+        const reg = /units\-transform(?:\:([-,\w]+))?/;
+        const specs = comment.text.match(reg);
+        if (specs) {
+          if (specs[1]) {
+            hasGlobalMembers = specs[1].split(',');
+          } else {
+            hasGlobalMembers = '*';
+          }
+        }
+      }
+    });
     root.walkDecls(function (decl) {
       if (decl && decl.next() && decl.next().type === 'comment' && decl.next().text === opts.comment) {
         decl.next().remove();
       } else {
-        if (opts.declMembers === '*' || opts.declMembers.includes(decl.prop)) {
+        // 存在行内注释
+        if (checkDeclTransform(decl)) {
+          decl.value = replacePx(decl.value);
+        } else if (hasGlobalMembers) {
+          if (hasGlobalMembers === '*' || (Array.isArray(hasGlobalMembers) && hasGlobalMembers.includes(decl.prop))) {
+            decl.value = replacePx(decl.value);
+          }
+        } else if (
+          opts.declMembers === '*' ||
+          (Array.isArray(opts.declMembers) && opts.declMembers.includes(decl.prop))
+        ) {
           decl.value = replacePx(decl.value);
         }
       }

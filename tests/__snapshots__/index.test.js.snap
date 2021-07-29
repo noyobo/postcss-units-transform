@@ -1,10 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test case: comment-all 1`] = `
+"/* units-transform */
+.main {
+  height: 3.57em;
+  width: 7.14em;
+  font-size: 1em;
+}
+
+.main1 {
+  height: 3.57em;
+  width: 7.14em;
+  font-size: 1.14em;
+}
+
+.main2 {
+  height: 3.57em;
+  width: 7.14em; /* units-transform */
+  font-size: 1.29em;
+}
+"
+`;
+
+exports[`Test case: comment-line 1`] = `
+".main {
+  height: 1rem;
+  width: 7.14em; /* units-transform */
+  font-size: 1em;
+}
+
+.main1 {
+  height: 1rem;
+  width: 2rem;
+  font-size: 1.14em;
+}
+
+.main2 {
+  height: 1rem;
+  width: 7.14em; /* units-transform */
+  font-size: 1.29em;
+}
+"
+`;
+
 exports[`Test case: comment-no 1`] = `
 ".title3 {
   padding: 20rpx 30px 2rem 4em;
   margin: 40rpx;
   font-size: 24px;
+}
+"
+`;
+
+exports[`Test case: comment-props 1`] = `
+"/* units-transform:height,height*/
+.main {
+  height: 3.57em;
+  width: 2rem;
+  font-size: 0.28rem;
+}
+
+.main1 {
+  height: 3.57em;
+  width: 2rem;
+  font-size: 0.32rem;
+}
+
+.main2 {
+  height: 3.57em;
+  width: 7.14em; /* units-transform */
+  font-size: 0.36rem;
 }
 "
 `;
@@ -121,7 +186,21 @@ exports[`Test case: pixel-values 1`] = `
 
 exports[`Test case: rem-em 1`] = `
 ".main {
+  height: 3.57em;
+  width: 2rem;
   font-size: 1em;
+}
+
+.main1 {
+  height: 3.57em;
+  width: 2rem;
+  font-size: 1.14em;
+}
+
+.main2 {
+  height: 3.57em;
+  width: 2rem;
+  font-size: 1.29em;
 }
 "
 `;

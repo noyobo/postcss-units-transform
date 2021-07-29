@@ -5,5 +5,5 @@ module.exports = {
   comment: 'no',
   targetUnits: 'em',
   sourceUnits: 'rem',
-  declMembers: ['font-size', 'height'],
+  declMembers: ['font-size'],
 };

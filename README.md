@@ -1,4 +1,4 @@
-postcss-units-transform
+postcss-units-transform@2.x
 
 [![Build Status](https://github.com/noyobo/postcss-units-transform/workflows/Node.js%20CI/badge.svg)](https://github.com/noyobo/postcss-units-transform/actions?workflow=Node.js+CI)
 [![npm version](https://badge.fury.io/js/postcss-units-transform.svg)](https://badge.fury.io/js/postcss-units-transform)
@@ -6,6 +6,12 @@ postcss-units-transform
 [![codecov](https://codecov.io/gh/noyobo/postcss-units-transform/branch/main/graph/badge.svg?token=ptSmeTp30P)](https://codecov.io/gh/noyobo/postcss-units-transform)
 
 CSS 任意单位之间的互相转换的 [PostCSS](https://github.com/ai/postcss)插件。
+
+## Required
+
+- PostCSS >= 8.0
+
+> PostCSS < 8.0 请使用 postcss-units-transform@1.x
 
 ## Install
 

@@ -26,18 +26,21 @@
     "url": "https://github.com/noyobo/postcss-units-transform/issues"
   },
   "homepage": "https://github.com/noyobo/postcss-units-transform#readme",
+  "peerDependencies": {
+    "postcss": "^8.3.11"
+  },
   "dependencies": {
-    "object-assign": "^4.1.1",
-    "postcss": "7.x"
+    "object-assign": "^4.1.1"
   },
   "devDependencies": {
-    "eslint": "^7.31.0",
+    "eslint": "^8.1.0",
     "fs-extra": "^10.0.0",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
     "lint-staged": "^11.1.1",
     "prettier": "^2.3.2",
-    "standard-version": "^9.3.1"
+    "standard-version": "^9.3.1",
+    "postcss": "^8.3.11"
   },
   "lint-staged": {
     "*.js": "prettier --write"

@@ -1,7 +1,7 @@
 var postcss = require('postcss');
 var assign = require('object-assign');
 
-module.exports = postcss.plugin('postcss-units-transform', function (options = {}) {
+module.exports = function (options = {}) {
   opts = assign(
     {
       divisor: 1, // 被除数
@@ -34,10 +34,10 @@ module.exports = postcss.plugin('postcss-units-transform', function (options = {
   function checkDeclTransform(decl) {
     return (decl.next() && decl.next().type === 'comment' && decl.next().text === 'units-transform') || false;
   }
-
-  return function (root) {
-    let hasGlobalMembers;
-    root.walkComments(function (comment) {
+  let hasGlobalMembers;
+  return {
+    postcssPlugin: 'postcss-units-transform',
+    Comment(comment) {
       // 根节点的注释 units-transform
       if (comment.parent.type === 'root') {
         const reg = /units\-transform(?:\:([-,\w]+))?/;
@@ -50,8 +50,8 @@ module.exports = postcss.plugin('postcss-units-transform', function (options = {
           }
         }
       }
-    });
-    root.walkDecls(function (decl) {
+    },
+    Declaration(decl) {
       if (decl && decl.next() && decl.next().type === 'comment' && decl.next().text === opts.comment) {
         decl.next().remove();
       } else {
@@ -69,6 +69,8 @@ module.exports = postcss.plugin('postcss-units-transform', function (options = {
           decl.value = replacePx(decl.value);
         }
       }
-    });
+    },
   };
-});
+};
+
+module.exports.postcss = true;
